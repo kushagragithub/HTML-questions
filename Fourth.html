@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>This is the fourth question</title>
+</head>
+<body>
+    <script type="text/javascript">
+        window.onload = function () {
+            var xx = new Array();
+           
+            for (var i = 0; i < xx.length; i++) {
+                AddRow(xx[i][0], xx[i][1]);
+            }
+        };
+ 
+        function Add() {
+            var txtName = document.getElementById("txtName");
+            var txtCountry = document.getElementById("txtCountry");
+            AddRow(txtName.value, txtCountry.value);
+            txtName.value = "";
+            txtCountry.value = "";
+        };
+ 
+        function Delete(button) {
+            
+            var row = button.parentNode.parentNode;
+            var name = row.getElementsByTagName("TD")[0].innerHTML;
+            if (confirm("Do you want to delete: " + name)) {
+ 
+               
+                var table = document.getElementById("tblxx");
+ 
+                //Delete the Table row using it's Index.
+                table.deleteRow(row.rowIndex);
+            }
+        };
+ 
+        function AddRow(name, country) {
+          
+            var tBody = document.getElementById("tblxx").getElementsByTagName("TBODY")[0];
+ 
+            row = tBody.insertRow(-1);
+ 
+            var cell = row.insertCell(-1);
+            cell.innerHTML = name;
+ 
+            cell = row.insertCell(-1);
+            cell.innerHTML = country;
+ 
+            cell = row.insertCell(-1);
+            var btnDelete = document.createElement("INPUT");
+            btnDelete.type = "button";
+            btnDelete.value = "Delete";
+            btnDelete.setAttribute("onclick", "Delete(this);");
+            cell.appendChild(btnDelete);
+        }
+    </script>
+    <table id="tblxx" cellpadding="0" cellspacing="0" border="1">
+        <thead>
+            
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><input type="text" id="txtName" /></td>
+                <td><input type="text" id="txtCountry" /></td>
+                <td><input type="button" onclick="Add()" value="Add" /></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

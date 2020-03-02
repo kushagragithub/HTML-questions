@@ -1,0 +1,33 @@
+<html>
+<body>
+<script>  
+function validateform(){ 
+var userid=document.myform.userid.value; 
+var name=document.myform.name.value;  
+var password=document.myform.password.value;
+var address=document.myform.address.value;
+if (userid==null || userid==""){  
+  alert("Cannot leave empty");  
+  return false;  
+}  
+  
+else if (name==null || name==""){  
+  alert("Cannot leave empty");  
+  return false;  
+}else if(password.length<6){  
+  alert("Password Should be 6 charc long");  
+  return false;  
+  }  
+}  
+</script>  
+<body>  
+<form name="myform" method="post"  onsubmit="return validateform()" > 
+userid: <input type="int" name="userid"><br/>  
+Name: <input type="text" name="name"><br/>  
+Password: <input type="password" name="password"><br/> 
+address: <input type="text" name="address"><br/>   
+
+<input type="submit" value="register">  
+</form>  
+</body>
+</html>
